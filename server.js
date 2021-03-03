@@ -1,19 +1,10 @@
 require('dotenv').config();
 const expressConfig = require('./config/express');
 const mongooseConfig = require('./config/mongoose');
-const exphbs = require('express-handlebars');
+
 
 const app = expressConfig();
 const db = mongooseConfig();
-
-app.engine(
-    'handlebars',
-    exphbs({
-      defaultLayout: 'main',
-    })
-  );
-  app.set('view engine', 'handlebars');
-
 
 
 //app.use(expressConfig.static('./public'));
