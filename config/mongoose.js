@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
-const uri = process.env.ATLAS_URI;
+// const uri = process.env.ATLAS_URI;
+
+const uri = process.env.MONGODB_URI || process.env.ATLAS_URI
+
 
 
 module.exports = async () => {
@@ -9,6 +12,7 @@ module.exports = async () => {
         useFindAndModify: false,
         useUnifiedTopology: true,
         useCreateIndex:true
+ 
       })
       .then(
           () => {
