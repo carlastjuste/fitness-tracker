@@ -1,31 +1,44 @@
 require('dotenv').config();
-const expressConfig = require('./config/express');
-const mongooseConfig = require('./config/mongoose');
+  
+const express = require("express");
+const mongoose = require('mongoose');
 
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const app = expressConfig();
-const db = mongooseConfig();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("./public"));
 
+const uri = process.env.MONGODB_URI;
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}
 
-//app.use(expressConfig.static('./public'));
-
-
-
-// const PORT = process.env.Port || 8080;
-
-// app.listen(PORT, ()=>console.log('App listening on port http://localhost:'+PORT));
-
-// // Serve static content for the app from the "public" directory in the application directory.
-// app.use(express.static('public'));
-
-app.get("/stats", (req, res) =>  {
-    res.send("Hello stats yppppppp");
+);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
 })
+  
 
-// app.get("/exercise", (req, res) =>  {
-//     res.send("Hello exercise");
-// })
 
-// app.get("/exercise?", (req, res) =>  {
-//     res.send("Hello exercise?");
-// })
+
+// ================================================================================
+// ROUTER
+// ================================================================================
+// require("./routes/apiRoutes")(app);
+require("./routes/html-routes")(app);
+
+
+
+
+//Listener
+app.listen(PORT, listening);
+
+function listening() {
+    console.log("App listening on PORT: " + PORT);
+}
