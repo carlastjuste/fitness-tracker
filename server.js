@@ -30,7 +30,7 @@ connection.once('open', () => {
 // ================================================================================
 // ROUTER
 // ================================================================================
-// require("./routes/apiRoutes")(app);
+require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
 
 
