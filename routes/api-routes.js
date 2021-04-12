@@ -25,14 +25,30 @@ app.put("/api/workouts/:id", (req, res) => {
 
 
 app.get('/api/workouts/range',(req, res) => {
-    Workout.find({})
+    //Workout.find({})
+    Workout.aggregate( [
+      {
+        $addFields: {
+          totalDuration: { $sum: "$exercises.duration" }
+         
+        }
+      }
+  ] )
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
   
     
 app.get('/api/workouts', (req, res) => {
-    Workout.find({})
+    //Workout.find({})
+    Workout.aggregate( [
+      {
+        $addFields: {
+          totalDuration: { $sum: "$exercises.duration" }
+         
+        }
+      }
+  ] )
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
