@@ -32,7 +32,7 @@ app.get('/api/workouts/range',(req, res) => {
           totalDuration: { $sum: "$exercises.duration" }
          
         }
-      }
+      },
   ] )
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
