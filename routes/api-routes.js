@@ -1,4 +1,5 @@
 
+var path = require('path');
 var Workout= require('../models/workout');
 
 
