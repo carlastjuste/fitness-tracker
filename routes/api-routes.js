@@ -6,7 +6,7 @@ var Workout= require('../models/workout');
 module.exports = function(app) {
 //create a workout
 app.post('/api/workouts', (req, res) => {
-    Workout.create(body.req)
+    Workout.create(req.body)
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
