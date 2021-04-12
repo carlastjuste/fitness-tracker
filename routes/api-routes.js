@@ -4,7 +4,7 @@ var Workout= require('../models/workout');
 
 module.exports = function(app) {
 //create a workout
-app.post('/workouts', (req, res) => {
+app.post('/api/workouts', (req, res) => {
     Workout.create(body.req)
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -29,4 +29,12 @@ app.get('/workouts/range').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
   
+    
+app.get('/workouts').get((req, res) => {
+    Workout.find()
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+  
+    
 };
