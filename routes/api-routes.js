@@ -25,14 +25,14 @@ app.put("/api/workouts/:id", (req, res) => {
 
 
 app.get('/api/workouts/range').get((req, res) => {
-    Workout.find()
+    Workout.find({})
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
   
     
 app.get('/api/workouts').get((req, res) => {
-    Workout.find()
+    Workout.find({})
     .then(data => res.json(data))
     .catch(err => res.status(400).json('Error: ' + err));
 });
