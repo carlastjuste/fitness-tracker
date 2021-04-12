@@ -1,8 +1,10 @@
 # FITNESS TRACKER
 
-This web application allows a traveler to see the weather outlook for multiple cities so he can plan his trip accordingly.
-
-The following image demonstrates the application functionality:
+This web application allows a track his workout: 
+  - The user can view, create and track daily workouts. 
+  - The use is able to log multiple exercises in a workout on a given day. 
+  
+The following image give an oveview of the application's interface:
 
 ![Ftness tracker demo](public/img/fitness.PNG)
 
